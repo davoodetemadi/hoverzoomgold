@@ -1,10 +1,9 @@
 {
     "name": "__MSG_extName__",
     "short_name": "__MSG_extShortName__",
-    "version": "1.0.109",
+    "version": "1.0.110",
     "description": "__MSG_extDescription__",
-    "homepage_url": "https://github.com/extesy/hoverzoom/",
-    "author": "Oleg Anashkin",
+    "homepage_url": "https://github.com/superlime/hoverzoomgold/",
     "manifest_version": 2,
     "minimum_edge_version": "33.14281.1000.0",
     "icons": {
