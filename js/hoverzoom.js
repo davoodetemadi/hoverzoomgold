@@ -240,7 +240,6 @@ var hoverZoom = {
             }
         }
 
-
         // Quick check to see if the current site is reddit (for visited link tracking)
         function isThisReddit(host) {
             return /reddit\.com/gi.test(host);

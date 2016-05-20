@@ -119,8 +119,8 @@ function showUpdateNotification() {
             message: '',
             iconUrl: '/images/icon32.png',
             items: [
-                { title: "Rebased on HoverZoom+ source", message: "" },
-                { title: "Gifv animations now require 'Zoom videos' to be set to true, so I've defaulted 'Mute videos' to true also.", message: "" }
+                { title: "Rebased on HoverZoom+ 1.0.109 source", message: "" },
+                { title: "Updated with latest HoverZoom changes", message: "" }
             ]
         };
         chrome.notifications.create(chrome.i18n.getMessage('extName'), options, function(id) {});
