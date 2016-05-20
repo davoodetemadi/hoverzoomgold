@@ -18,7 +18,8 @@ function loadOptions() {
     options.showHighRes = options.hasOwnProperty('showHighRes') ? options.showHighRes : true;
     options.galleriesMouseWheel = options.hasOwnProperty('galleriesMouseWheel') ? options.galleriesMouseWheel : true;
     options.disableMouseWheelForVideo = options.hasOwnProperty('disableMouseWheelForVideo') ? options.disableMouseWheelForVideo : false;
-    options.addToHistory = options.hasOwnProperty('addToHistory') ? options.addToHistory : false;
+    options.addToHistory = options.hasOwnProperty('addToHistory') ? options.addToHistory : true;
+    options.addToHistory = options.hasOwnProperty('addToRedditGoldHistory') ? options.addToRedditGoldHistory : true;
     options.alwaysPreload = options.hasOwnProperty('alwaysPreload') ? options.alwaysPreload : false;
     options.displayDelay = options.hasOwnProperty('displayDelay') ? options.displayDelay : 100;
     options.displayDelayVideo = options.hasOwnProperty('displayDelayVideo') ? options.displayDelayVideo : 500;
@@ -26,6 +27,8 @@ function loadOptions() {
     options.excludedSites = options.hasOwnProperty('excludedSites') ? options.excludedSites : [];
     options.whiteListMode = options.hasOwnProperty('whiteListMode') ? options.whiteListMode : false;
     options.picturesOpacity = options.hasOwnProperty('picturesOpacity') ? options.picturesOpacity : 1;
+    options.numberOfCaptionLines = options.hasOwnProperty('numberOfCaptionLines') ? options.numberOfCaptionLines : 3;
+    options.maxCaptionHeight = options.hasOwnProperty('maxCaptionHeight') ? options.maxCaptionHeight : 27;
     options.showWhileLoading = options.hasOwnProperty('showWhileLoading') ? options.showWhileLoading : true;
     options.mouseUnderlap = options.hasOwnProperty('mouseUnderlap') ? options.mouseUnderlap : true;
     options.updateNotifications = options.hasOwnProperty('updateNotifications') ? options.updateNotifications : true;
@@ -111,7 +114,7 @@ function showUpdateNotification() {
             message: '',
             iconUrl: '/images/icon32.png',
             items: [
-                { title: "Ambient light for images", message: "" }
+                { title: "Add Reddit Gold integration", message: "" }
             ]
         };
         chrome.notifications.create(chrome.i18n.getMessage('extName'), options, function(id) {});

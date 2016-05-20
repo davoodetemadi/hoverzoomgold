@@ -1,10 +1,10 @@
 ﻿{
     "extName": {
-        "message": "Hover Zoom+",
+        "message": "Hover Zoom GOLD!",
         "description": "Extension name"
     },
     "extShortName": {
-        "message": "HoverZoom",
+        "message": "HoverZoomGOLD",
         "description": "Short extension name"
     },
     "extDescription": {
@@ -12,7 +12,7 @@
         "description": "Extension description in Chrome webstore (max. 132 characters)"
     },
     "extUpdated": {
-        "message": "Hover Zoom+ has been updated",
+        "message": "Hover Zoom GOLD! has been updated",
         "description": "Extension update notification"
     },
     "popDisableForAllSites": {
@@ -44,7 +44,7 @@
         "description": "[popup] More options"
     },
     "optTitle": {
-        "message": "Hover Zoom+ Options",
+        "message": "Hover Zoom GOLD! Options",
         "description": "[options] Page title"
     },
     "optButtonSave": {
@@ -65,7 +65,7 @@
     },
     "optExtensionEnabled": {
         "message": "Enable Hover Zoom",
-        "description": "[options] Enable Hover Zoom+ option"
+        "description": "[options] Enable Hover Zoom GOLD! option"
     },
     "optSectionView": {
         "message": "View",
@@ -224,11 +224,11 @@
         "description": "[options] Page title for site options"
     },
     "optSectionSitesEnabled": {
-        "message": "URLs for which Hover Zoom+ must be enabled",
+        "message": "URLs for which Hover Zoom GOLD! must be enabled",
         "description": "[options] Page section for enabling extension for specific sites"
     },
     "optSectionSitesDisabled": {
-        "message": "URLs for which Hover Zoom+ must be disabled",
+        "message": "URLs for which Hover Zoom GOLD! must be disabled",
         "description": "[options] Page section for enabling extension for specific sites"
     },
     "optWhitelistMode": {
@@ -236,7 +236,7 @@
         "description": "[options] Whitelist mode checkbox"
     },
     "optWhitelistModeTooltip": {
-        "message": "Only enable Hover Zoom+ for the sites listed below",
+        "message": "Only enable Hover Zoom GOLD! for the sites listed below",
         "description": "[options] Tooltip for whitelist mode checkbox"
     },
     "optSitePlaceholder": {
@@ -296,15 +296,15 @@
         "description": "[options] Unit name (percentage) for opacity option"
     },
     "optActionKeyTitle": {
-        "message": "Activate Hover Zoom+",
+        "message": "Activate Hover Zoom GOLD!",
         "description": "[options] Action key title"
     },
     "optActionKeyDescription": {
-        "message": "If a key is set, Hover Zoom+ will be active only when this key is held down.",
+        "message": "If a key is set, Hover Zoom GOLD! will be active only when this key is held down.",
         "description": "[options] Action key description"
     },
     "optHideKeyTitle": {
-        "message": "Disable Hover Zoom+",
+        "message": "Disable Hover Zoom GOLD!",
         "description": "[options] Action key title"
     },
     "optHideKeyDescription": {
@@ -370,5 +370,17 @@
     "optFooterVersionCopyright": {
         "message": "Version $1 - © 2014-2016 Oleg Anashkin",
         "description": "[options] Copyright and version number in page footer"
+    },
+    "optCaptionLinesUnitName": {
+        "description": "[options] Unit name (number) lines of caption to show option",
+        "message": "lines"
+    },
+    "optMaxCaptionLines": {
+        "description": "[options] Maximum number of lines a caption can show option",
+        "message": "Max height of caption:"
+    },
+    "optAddToRedditGoldHistory": {
+        "description": "[options] Add viewed pictures to your Reddit GOLD! history option",
+        "message": "Add viewed pictures to your Reddit GOLD! history"
     }
 }
