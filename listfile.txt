@@ -1,0 +1,9 @@
+_locales\*
+css\*
+fonts\*
+html\*
+images\*
+js\*
+plugins\*
+LICENSE
+manifest.json
