@@ -1,4 +1,4 @@
-﻿if (-not (test-path "$env:ProgramW6432\7-Zip\7z.exe")) {throw "$env:ProgramW6432\7-Zip\7z.exe needed"} 
+if (-not (test-path "$env:ProgramW6432\7-Zip\7z.exe")) {throw "$env:ProgramW6432\7-Zip\7z.exe needed"} 
 set-alias sz "$env:ProgramW6432\7-Zip\7z.exe"  
 
 $manifest = Get-Content "manifest.json" | ConvertFrom-Json
