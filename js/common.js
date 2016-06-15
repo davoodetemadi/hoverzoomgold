@@ -11,7 +11,7 @@ function loadOptions() {
     options.zoomFactor = options.hasOwnProperty('zoomFactor') ? options.zoomFactor : 1;
     options.zoomVideos = options.hasOwnProperty('zoomVideos') ? options.zoomVideos : true;
     options.videoPositionStep = options.hasOwnProperty('videoPositionStep') ? options.videoPositionStep : 10;
-    options.muteVideos = options.hasOwnProperty('muteVideos') ? options.muteVideos : false;
+    options.muteVideos = options.hasOwnProperty('muteVideos') ? options.muteVideos : true;
     options.videoVolume = options.hasOwnProperty('videoVolume') ? options.videoVolume : 0.25;
     options.pageActionEnabled = options.hasOwnProperty('pageActionEnabled') ? options.pageActionEnabled : true;
     options.showCaptions = options.hasOwnProperty('showCaptions') ? options.showCaptions : true;
@@ -114,7 +114,8 @@ function showUpdateNotification() {
             message: '',
             iconUrl: '/images/icon32.png',
             items: [
-                { title: "Add Reddit Gold integration", message: "" }
+                { title: "Rebased on HoverZoom+ source", message: "" },
+                { title: "Gifv animations now require 'Zoom videos' to be set to true, so I've defaulted 'Mute videos' to true also.", message: "" }
             ]
         };
         chrome.notifications.create(chrome.i18n.getMessage('extName'), options, function(id) {});
