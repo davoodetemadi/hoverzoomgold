@@ -11,7 +11,6 @@ function loadOptions() {
     options.zoomFactor = options.hasOwnProperty('zoomFactor') ? options.zoomFactor : 1;
     options.zoomVideos = options.hasOwnProperty('zoomVideos') ? options.zoomVideos : true;
     options.videoPositionStep = options.hasOwnProperty('videoPositionStep') ? options.videoPositionStep : 10;
-    options.muteVideos = options.hasOwnProperty('muteVideos') ? options.muteVideos : true;
     options.videoTimestamp = options.hasOwnProperty('videoTimestamp') ? options.videoTimestamp : false;
     options.muteVideos = options.hasOwnProperty('muteVideos') ? options.muteVideos : true;
     options.videoVolume = options.hasOwnProperty('videoVolume') ? options.videoVolume : 0.25;
