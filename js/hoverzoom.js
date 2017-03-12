@@ -145,7 +145,7 @@ var hoverZoom = {
                     // This is looped 10x max just in case something
                     // goes wrong, to avoid freezing the process.
                     var i = 0;
-                    while (hz.hzImg.height() > wndHeight - statusBarHeight && i++ < 10) {
+                    while (hz.hzImg.height() + hzCaption.height() > wndHeight - statusBarHeight && i++ < 10) {
                         imgFullSize.height(wndHeight - padding - statusBarHeight - hzCaption.height()).width('auto');
                         hzCaption.css('max-width', imgFullSize.width());
                     }
@@ -240,6 +240,12 @@ var hoverZoom = {
             } else {
                 hz.hzImg.css({top:Math.round(position.top), left:Math.round(position.left)});
             }
+        }
+
+
+        // Quick check to see if the current site is reddit (for visited link tracking)
+        function isThisReddit(host) {
+            return /reddit\.com/gi.test(host);
         }
 
         function isVideoLink(url, includeGifs) {
@@ -608,7 +614,12 @@ var hoverZoom = {
 
             if (hz.currentLink) {
                 var linkData = hz.currentLink.data();
-                if (!options.ambilightEnabled && linkData.hoverZoomCaption) {
+
+                if (options.showCaptions && !options.ambilightEnabled && linkData.hoverZoomCaption) {
+                    if (!isNaN(options.maxCaptionHeight)) {
+                        hzCaptionCss['max-height'] = options.maxCaptionHeight + 'px';
+                    }
+
                     if (options.captionLocation === "below") {
                         hzCaption = $('<div/>', {id:'hzCaption', text:linkData.hoverZoomCaption}).css(hzCaptionCss).appendTo(hz.hzImg);
                     } else if (options.captionLocation === "above") {
@@ -634,6 +645,30 @@ var hoverZoom = {
             if (options.addToHistory && !chrome.extension.inIncognitoContext) {
                 var url = hz.currentLink.context.href || imgDetails.url;
                 chrome.runtime.sendMessage({action:'addUrlToHistory', url:url});
+            }
+            chrome.runtime.sendMessage({action:'trackEvent', event:{category:'Actions', action:'ImageDisplayedOnSite', label:document.location.host}});
+            chrome.runtime.sendMessage({action:'trackEvent', event:{category:'Actions', action:'ImageDisplayedFromSite', label:imgDetails.host}});
+            // Skip reddit link logging if not on reddit, or if user didn't enable "add to gold history", or if in
+            // chrome incognito mode.
+            if (options.addToRedditGoldHistory && !chrome.extension.inIncognitoContext && isThisReddit(location.host))
+            {
+                // Also skip if the user doesn't actually *have* gold.
+                if ($('body').hasClass('gold'))
+                {
+                    var thing = hz.currentLink.closest('.thing');
+                    var fullname = thing.data().fullname;
+                    // form search selector so that the injected script can find the right node
+                    var selector = '.id-' + fullname + ' a.title';
+                    // inject simple script to trigger a 'visit' event on the right node. Figuring this part out took
+                    // waaaaaaaaaay longer than it should have.  :P  turns out chrome enforces weird security for
+                    // extensions that are implemented as 'content' scripts, and this is the best documented way 
+                    // around it.
+                    var scriptToInject = function (thingSelector) { $(thingSelector).trigger('visit'); };
+                    var actualCode = '(' + scriptToInject + ')(' + JSON.stringify(selector) + ')';
+                    document.documentElement.setAttribute('onreset', actualCode);
+                    document.documentElement.dispatchEvent(new CustomEvent('reset'));
+                    document.documentElement.removeAttribute('onreset');
+                }
             }
         }
 
@@ -1272,6 +1307,8 @@ var hoverZoom = {
                 if (options.captionLocation != "none" && !options.ambilightEnabled) {
                     $(hzCaption).text(data.hoverZoomCaption);
                 }
+                
+                posImg();
             }
         }
 

@@ -80,6 +80,8 @@ function saveOptions() {
     options.pageActionEnabled = $('#chkPageActionEnabled')[0].checked;
     options.showWhileLoading = $('#chkShowWhileLoading')[0].checked;
     options.showHighRes = $('#chkShowHighRes')[0].checked;
+    options.addToHistory = $('#chkAddToHistory')[0].checked;
+    options.addToRedditGoldHistory = $('#chkAddToRedditGoldHistory')[0].checked;
     options.galleriesMouseWheel = $('#chkGalleriesMouseWheel')[0].checked;
     options.disableMouseWheelForVideo = $('#chkDisableMouseWheelForVideo')[0].checked;
     options.displayDelay = getMilliseconds($('#txtDisplayDelay'));
@@ -89,6 +91,8 @@ function saveOptions() {
     options.centerImages = $('#chkCenterImages')[0].checked;
 
     options.whiteListMode = $('#chkWhiteListMode')[0].checked;
+    options.numberOfCaptionLines = $('#txtMaxCaptionLines')[0].value;
+    options.maxCaptionHeight = (options.numberOfCaptionLines * 11) + 5;
     options.excludedSites = [];
     $('#selExcludedSites').find('span').each(function () {
         options.excludedSites.push($(this).text());
@@ -136,6 +140,8 @@ function restoreOptions() {
     $('#chkPageActionEnabled')[0].checked = options.pageActionEnabled;
     $('#chkShowWhileLoading')[0].checked = options.showWhileLoading;
     $('#chkShowHighRes')[0].checked = options.showHighRes;
+    $('#chkAddToHistory')[0].checked = options.addToHistory;
+    $('#chkAddToRedditGoldHistory')[0].checked = options.addToRedditGoldHistory;
     $('#chkGalleriesMouseWheel')[0].checked = options.galleriesMouseWheel;
     $('#chkDisableMouseWheelForVideo')[0].checked = options.disableMouseWheelForVideo;
     $('#txtDisplayDelay').val((options.displayDelay || 0) / 1000);
@@ -163,6 +169,8 @@ function restoreOptions() {
     $('#chkAlwaysPreload')[0].checked = options.alwaysPreload;
     $('#chkEnableGalleries')[0].checked = options.enableGalleries;
     $('#txtPicturesOpacity').val(options.picturesOpacity * 100);
+
+    $('#txtMaxCaptionLines').val(options.numberOfCaptionLines);
 
     $('input:checked').trigger('gumby.check');
     return false;
