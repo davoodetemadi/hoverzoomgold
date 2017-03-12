@@ -615,7 +615,7 @@ var hoverZoom = {
             if (hz.currentLink) {
                 var linkData = hz.currentLink.data();
 
-                if (options.showCaptions && !options.ambilightEnabled && linkData.hoverZoomCaption) {
+                if (options.captionLocation !== "none" && !options.ambilightEnabled && linkData.hoverZoomCaption) {
                     if (!isNaN(options.maxCaptionHeight)) {
                         hzCaptionCss['max-height'] = options.maxCaptionHeight + 'px';
                     }
