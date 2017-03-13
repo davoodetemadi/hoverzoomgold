@@ -247,6 +247,12 @@ var hoverZoom = {
             return /reddit\.com/gi.test(host);
         }
 
+
+        // Quick check to see if the current site is reddit (for visited link tracking)
+        function isThisReddit(host) {
+            return /reddit\.com/gi.test(host);
+        }
+
         function isVideoLink(url, includeGifs) {
             if (url.lastIndexOf('?') > 0)
                 url = url.substr(0, url.lastIndexOf('?'));
@@ -613,7 +619,6 @@ var hoverZoom = {
 
             if (hz.currentLink) {
                 var linkData = hz.currentLink.data();
-
                 if (options.captionLocation !== "none" && !options.ambilightEnabled && linkData.hoverZoomCaption) {
                     if (!isNaN(options.maxCaptionHeight)) {
                         hzCaptionCss['max-height'] = options.maxCaptionHeight + 'px';
@@ -697,7 +702,8 @@ var hoverZoom = {
                 } else {
                     hideHoverZoomImg();
                     //hz.currentLink.removeClass('hoverZoomLink').removeData();
-                    console.warn('[HoverZoom] Failed to load image: ' + src);
+                    console.warn('[HoverZoom] Failed to load image: ' + imgDetails.url);
+                    chrome.runtime.sendMessage({action:'trackEvent', event:{category:'Errors', action:'LoadingErrorFromSite', label:imgDetails.host}});
                 }
             }
         }
