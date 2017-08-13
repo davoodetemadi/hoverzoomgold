@@ -91,7 +91,7 @@ hoverZoomPlugins.push({
                                 }
                             }).fail(function(jqXHR) {
                                 if (jqXHR.status === 429) {
-                                    console.info("imgur.com is enforcing rate limiting on hoverzoom+ extension. Album preview won't work until this problem is resolved.");
+                                    console.info("imgur.com is enforcing rate limiting on Hover Zoom GOLD! extension. Album preview won't work until this problem is resolved.");
                                     return;
                                 }
                                 // Unfortunately /gallery/ can be both album or a single image. If album is not found then try it as a single image instead.

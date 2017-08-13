@@ -1,6 +1,6 @@
 {
   "extName":{
-    "message":"Hover Zoom+",
+    "message":"Hover Zoom GOLD!",
     "description":"Extension name"
   },
   "extShortName":{
@@ -12,7 +12,7 @@
     "description":"Extension description in Chrome webstore (max. 132 characters)"
   },
   "extUpdated":{
-    "message":"Hover Zoom+ güncellendi",
+    "message":"Hover Zoom GOLD! güncellendi",
     "description":"Extension update notification"
   },
   "popDisableForAllSites":{
@@ -44,7 +44,7 @@
     "description":"[popup] More options"
   },
   "optTitle":{
-    "message":"Hover Zoom+ Seçenekleri",
+    "message":"Hover Zoom GOLD! Seçenekleri",
     "description":"[options] Page title"
   },
   "optButtonSave":{
@@ -65,7 +65,7 @@
   },
   "optExtensionEnabled":{
     "message":"Hover Zoom etkinleştir",
-    "description":"[options] Enable Hover Zoom+ option"
+    "description":"[options] Enable Hover Zoom GOLD! option"
   },
   "optSectionView":{
     "message":"Görüntüle",
@@ -252,11 +252,11 @@
     "description":"[options] Page title for site options"
   },
   "optSectionSitesEnabled":{
-    "message":"Hover Zoom+ etkin olan adresler",
+    "message":"Hover Zoom GOLD! etkin olan adresler",
     "description":"[options] Page section for enabling extension for specific sites"
   },
   "optSectionSitesDisabled":{
-    "message":"Hover Zoom+ etkin olmayan adresler",
+    "message":"Hover Zoom GOLD! etkin olmayan adresler",
     "description":"[options] Page section for enabling extension for specific sites"
   },
   "optWhitelistMode":{
@@ -264,7 +264,7 @@
     "description":"[options] Whitelist mode checkbox"
   },
   "optWhitelistModeTooltip":{
-    "message":"Sadece aşağıda listelenen siteler için Hover Zoom+ etkinleştir",
+    "message":"Sadece aşağıda listelenen siteler için Hover Zoom GOLD! etkinleştir",
     "description":"[options] Tooltip for whitelist mode checkbox"
   },
   "optSitePlaceholder":{
@@ -324,15 +324,15 @@
     "description":"[options] Unit name (percentage) for opacity option"
   },
   "optActionKeyTitle":{
-    "message":"Hover Zoom+ etkinleştir",
+    "message":"Hover Zoom GOLD! etkinleştir",
     "description":"[options] Action key title"
   },
   "optActionKeyDescription":{
-    "message":"Eğer bir tuş ayarlanırsa, Hover Zoom+ sadece bu tuşa basılı tutulduğunda etkin olacaktır.",
+    "message":"Eğer bir tuş ayarlanırsa, Hover Zoom GOLD! sadece bu tuşa basılı tutulduğunda etkin olacaktır.",
     "description":"[options] Action key description"
   },
   "optHideKeyTitle":{
-    "message":"Hover Zoom+ devre dışı bırak",
+    "message":"Hover Zoom GOLD! devre dışı bırak",
     "description":"[options] Action key title"
   },
   "optHideKeyDescription":{

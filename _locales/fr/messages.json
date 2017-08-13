@@ -1,6 +1,6 @@
 {
   "extName":{
-    "message":"Hover Zoom+",
+    "message":"Hover Zoom GOLD!",
     "description":"Extension name"
   },
   "extShortName":{
@@ -12,7 +12,7 @@
     "description":"Extension description in Chrome webstore (max. 132 characters)"
   },
   "extUpdated":{
-    "message":"Hover Zoom+ a été mis à jour",
+    "message":"Hover Zoom GOLD! a été mis à jour",
     "description":"Extension update notification"
   },
   "popDisableForAllSites":{
@@ -44,7 +44,7 @@
     "description":"[popup] More options"
   },
   "optTitle":{
-    "message":"Options d'Hover Zoom+",
+    "message":"Options d'Hover Zoom GOLD!",
     "description":"[options] Page title"
   },
   "optButtonSave":{
@@ -65,7 +65,7 @@
   },
   "optExtensionEnabled":{
     "message":"Activer l'Hover Zoom",
-    "description":"[options] Enable Hover Zoom+ option"
+    "description":"[options] Enable Hover Zoom GOLD! option"
   },
   "optSectionView":{
     "message":"Voir",
@@ -216,11 +216,11 @@
     "description":"[options] Page title for site options"
   },
   "optSectionSitesEnabled":{
-    "message":"Url pour lesquelles Hover Zoom+ doit être activé",
+    "message":"Url pour lesquelles Hover Zoom GOLD! doit être activé",
     "description":"[options] Page section for enabling extension for specific sites"
   },
   "optSectionSitesDisabled":{
-    "message":"Url pour lesquelles Hover Zoom+ doit être désactivé",
+    "message":"Url pour lesquelles Hover Zoom GOLD! doit être désactivé",
     "description":"[options] Page section for enabling extension for specific sites"
   },
   "optWhitelistMode":{
@@ -228,7 +228,7 @@
     "description":"[options] Whitelist mode checkbox"
   },
   "optWhitelistModeTooltip":{
-    "message":"Activer Hover Zoom+ uniquement pour les sites ci-dessous",
+    "message":"Activer Hover Zoom GOLD! uniquement pour les sites ci-dessous",
     "description":"[options] Tooltip for whitelist mode checkbox"
   },
   "optSitePlaceholder":{
@@ -288,15 +288,15 @@
     "description":"[options] Unit name (percentage) for opacity option"
   },
   "optActionKeyTitle":{
-    "message":"Activer Hover Zoom+",
+    "message":"Activer Hover Zoom GOLD!",
     "description":"[options] Action key title"
   },
   "optActionKeyDescription":{
-    "message":"Si une touche est définie, Hover Zoom+ ne sera actif que lorsque cette touche est maintenue enfoncée.",
+    "message":"Si une touche est définie, Hover Zoom GOLD! ne sera actif que lorsque cette touche est maintenue enfoncée.",
     "description":"[options] Action key description"
   },
   "optHideKeyTitle":{
-    "message":"Désactiver Hover Zoom+",
+    "message":"Désactiver Hover Zoom GOLD!",
     "description":"[options] Action key title"
   },
   "optHideKeyDescription":{

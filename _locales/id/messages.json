@@ -1,6 +1,6 @@
 {
   "extName":{
-    "message":"Hover Zoom+",
+    "message":"Hover Zoom GOLD!",
     "description":"Extension name"
   },
   "extShortName":{
@@ -12,7 +12,7 @@
     "description":"Extension description in Chrome webstore (max. 132 characters)"
   },
   "extUpdated":{
-    "message":"Hover Zoom+ telah diperbarui",
+    "message":"Hover Zoom GOLD! telah diperbarui",
     "description":"Extension update notification"
   },
   "popDisableForAllSites":{
@@ -44,7 +44,7 @@
     "description":"[popup] More options"
   },
   "optTitle":{
-    "message":"Hover Zoom+ Pilihan",
+    "message":"Hover Zoom GOLD! Pilihan",
     "description":"[options] Page title"
   },
   "optButtonSave":{
@@ -65,7 +65,7 @@
   },
   "optExtensionEnabled":{
     "message":"Mengaktifkan Hover Zoom",
-    "description":"[options] Enable Hover Zoom+ option"
+    "description":"[options] Enable Hover Zoom GOLD! option"
   },
   "optSectionView":{
     "message":"Tampilan",
@@ -236,7 +236,7 @@
     "description":"[options] Whitelist mode checkbox"
   },
   "optWhitelistModeTooltip":{
-    "message":"Hanya mengaktifkan Hover Zoom+ untuk situs yang terdaftar di bawah ini",
+    "message":"Hanya mengaktifkan Hover Zoom GOLD! untuk situs yang terdaftar di bawah ini",
     "description":"[options] Tooltip for whitelist mode checkbox"
   },
   "optSitePlaceholder":{
@@ -296,15 +296,15 @@
     "description":"[options] Unit name (percentage) for opacity option"
   },
   "optActionKeyTitle":{
-    "message":"Mengaktifkan Hover Zoom+",
+    "message":"Mengaktifkan Hover Zoom GOLD!",
     "description":"[options] Action key title"
   },
   "optActionKeyDescription":{
-    "message":"Jika tombol set, Hover Zoom+ hanya akan aktif ketika tombol ini ditekan.",
+    "message":"Jika tombol set, Hover Zoom GOLD! hanya akan aktif ketika tombol ini ditekan.",
     "description":"[options] Action key description"
   },
   "optHideKeyTitle":{
-    "message":"Menonaktifkan Hover Zoom+",
+    "message":"Menonaktifkan Hover Zoom GOLD!",
     "description":"[options] Action key title"
   },
   "optHideKeyDescription":{

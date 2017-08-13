@@ -1,6 +1,6 @@
 {
   "extName":{
-    "message":"Hover Zoom+",
+    "message":"Hover Zoom GOLD!",
     "description":"Extension name"
   },
   "extShortName":{
@@ -12,7 +12,7 @@
     "description":"Extension description in Chrome webstore (max. 132 characters)"
   },
   "extUpdated":{
-    "message":"Hover Zoom+ on päivitetty",
+    "message":"Hover Zoom GOLD! on päivitetty",
     "description":"Extension update notification"
   },
   "popDisableForAllSites":{
@@ -44,7 +44,7 @@
     "description":"[popup] More options"
   },
   "optTitle":{
-    "message":"Hover Zoom+ Asetukset",
+    "message":"Hover Zoom GOLD! Asetukset",
     "description":"[options] Page title"
   },
   "optButtonSave":{
@@ -64,8 +64,8 @@
     "description":"[options] Page title for general options"
   },
   "optExtensionEnabled":{
-    "message":"Hover Zoom+ päälle",
-    "description":"[options] Enable Hover Zoom+ option"
+    "message":"Hover Zoom GOLD! päälle",
+    "description":"[options] Enable Hover Zoom GOLD! option"
   },
   "optSectionView":{
     "message":"Ruutu",
@@ -164,11 +164,11 @@
     "description":"[options] Page title for site options"
   },
   "optSectionSitesEnabled":{
-    "message":"URL osoitteet missä Hover Zoom+ on aina päällä",
+    "message":"URL osoitteet missä Hover Zoom GOLD! on aina päällä",
     "description":"[options] Page section for enabling extension for specific sites"
   },
   "optSectionSitesDisabled":{
-    "message":"URL osoitteet missä Hover Zoom+ on aina pois päältä",
+    "message":"URL osoitteet missä Hover Zoom GOLD! on aina pois päältä",
     "description":"[options] Page section for enabling extension for specific sites"
   },
   "optButtonAddSite":{
@@ -208,15 +208,15 @@
     "description":"[options] Automatically preload zoomed images option"
   },
   "optActionKeyTitle":{
-    "message":"Aktivoi Hover Zoom+",
+    "message":"Aktivoi Hover Zoom GOLD!",
     "description":"[options] Action key title"
   },
   "optActionKeyDescription":{
-    "message":"Jos näppäin on valittu, Hover Zoom+ toimii vain kun tämä näppäin on painettuna pohjaan.",
+    "message":"Jos näppäin on valittu, Hover Zoom GOLD! toimii vain kun tämä näppäin on painettuna pohjaan.",
     "description":"[options] Action key description"
   },
   "optHideKeyTitle":{
-    "message":"Poista Hover Zoom+ käytöstä",
+    "message":"Poista Hover Zoom GOLD! käytöstä",
     "description":"[options] Action key title"
   },
   "optPrevImgKeyTitle":{

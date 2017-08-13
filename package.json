@@ -1,18 +1,18 @@
 {
-  "name": "hoverzoom-plus",
+  "name": "hoverzoomgold",
   "version": "1.0.0",
-  "description": "Hover Zoom+",
+  "description": "Hover Zoom GOLD!",
   "main": "js/hoverzoom.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/extesy/hoverzoom.git"
+    "url": "git+https://github.com/superlime/hoverzoomgold.git"
   },
-  "author": "Oleg Anashkin",
+  "author": "superlime",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/extesy/hoverzoom/issues"
+    "url": "https://github.com/superlime/hoverzoomgold/issues"
   },
-  "homepage": "https://github.com/extesy/hoverzoom#readme",
+  "homepage": "https://github.com/superlime/hoverzoomgold#readme",
   "eslintConfig": {
     "env": {
       "browser": true,

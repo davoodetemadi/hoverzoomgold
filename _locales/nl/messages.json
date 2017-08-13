@@ -1,6 +1,6 @@
 {
   "extName":{
-    "message":"Hover Zoom+",
+    "message":"Hover Zoom GOLD!",
     "description":"Extension name"
   },
   "extShortName":{
@@ -12,7 +12,7 @@
     "description":"Extension description in Chrome webstore (max. 132 characters)"
   },
   "extUpdated":{
-    "message":"Hover Zoom+ is bijgewerkt",
+    "message":"Hover Zoom GOLD! is bijgewerkt",
     "description":"Extension update notification"
   },
   "popDisableForAllSites":{
@@ -44,7 +44,7 @@
     "description":"[popup] More options"
   },
   "optTitle":{
-    "message":"Hover Zoom+ opties",
+    "message":"Hover Zoom GOLD! opties",
     "description":"[options] Page title"
   },
   "optButtonSave":{
@@ -65,7 +65,7 @@
   },
   "optExtensionEnabled":{
     "message":"Schakel Hover Zoom in",
-    "description":"[options] Enable Hover Zoom+ option"
+    "description":"[options] Enable Hover Zoom GOLD! option"
   },
   "optSectionView":{
     "message":"Toon",
@@ -188,11 +188,11 @@
     "description":"[options] Unit name (percentage) for opacity option"
   },
   "optActionKeyTitle":{
-    "message":"Hover Zoom+ inschakelen",
+    "message":"Hover Zoom GOLD! inschakelen",
     "description":"[options] Action key title"
   },
   "optHideKeyTitle":{
-    "message":"Hover Zoom+ uitschakelen",
+    "message":"Hover Zoom GOLD! uitschakelen",
     "description":"[options] Action key title"
   },
   "optOpenImageInWindowKeyTitle":{

@@ -1,6 +1,6 @@
 {
   "extName":{
-    "message":"Hover Zoom+",
+    "message":"Hover Zoom GOLD!",
     "description":"Extension name"
   },
   "extShortName":{
@@ -12,7 +12,7 @@
     "description":"Extension description in Chrome webstore (max. 132 characters)"
   },
   "extUpdated":{
-    "message":"Hover Zoom+ je ažuriran",
+    "message":"Hover Zoom GOLD! je ažuriran",
     "description":"Extension update notification"
   },
   "popDisableForAllSites":{
@@ -44,7 +44,7 @@
     "description":"[popup] More options"
   },
   "optTitle":{
-    "message":"Hover Zoom+ Opcije",
+    "message":"Hover Zoom GOLD! Opcije",
     "description":"[options] Page title"
   },
   "optButtonSave":{
@@ -65,7 +65,7 @@
   },
   "optExtensionEnabled":{
     "message":"Omogućiti Hover Zoom",
-    "description":"[options] Enable Hover Zoom+ option"
+    "description":"[options] Enable Hover Zoom GOLD! option"
   },
   "optSectionView":{
     "message":"Prikaži",
@@ -252,11 +252,11 @@
     "description":"[options] Page title for site options"
   },
   "optSectionSitesEnabled":{
-    "message":"Stranice na kojim Hover Zoom+ mora biti omogućen",
+    "message":"Stranice na kojim Hover Zoom GOLD! mora biti omogućen",
     "description":"[options] Page section for enabling extension for specific sites"
   },
   "optSectionSitesDisabled":{
-    "message":"Stranice na kojim Hover Zoom+ mora biti onemogućen",
+    "message":"Stranice na kojim Hover Zoom GOLD! mora biti onemogućen",
     "description":"[options] Page section for enabling extension for specific sites"
   },
   "optWhitelistMode":{
@@ -264,7 +264,7 @@
     "description":"[options] Whitelist mode checkbox"
   },
   "optWhitelistModeTooltip":{
-    "message":"Omogući Hover Zoom+ samo za dolje navedene stranice",
+    "message":"Omogući Hover Zoom GOLD! samo za dolje navedene stranice",
     "description":"[options] Tooltip for whitelist mode checkbox"
   },
   "optSitePlaceholder":{
@@ -324,15 +324,15 @@
     "description":"[options] Unit name (percentage) for opacity option"
   },
   "optActionKeyTitle":{
-    "message":"Aktivirati Hover Zoom+",
+    "message":"Aktivirati Hover Zoom GOLD!",
     "description":"[options] Action key title"
   },
   "optActionKeyDescription":{
-    "message":"Ako je tipka postavljena, Hover Zoom+ će biti aktiviran samo kada je tipka pritisnuta.",
+    "message":"Ako je tipka postavljena, Hover Zoom GOLD! će biti aktiviran samo kada je tipka pritisnuta.",
     "description":"[options] Action key description"
   },
   "optHideKeyTitle":{
-    "message":"Onemogućiti Hover Zoom+",
+    "message":"Onemogućiti Hover Zoom GOLD!",
     "description":"[options] Action key title"
   },
   "optHideKeyDescription":{

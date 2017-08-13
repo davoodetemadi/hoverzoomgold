@@ -65,7 +65,7 @@
   },
   "optExtensionEnabled":{
     "message":"Aktivera Hover Zoom",
-    "description":"[options] Enable Hover Zoom+ option"
+    "description":"[options] Enable Hover Zoom GOLD! option"
   },
   "optSectionView":{
     "message":"Visa",
@@ -224,11 +224,11 @@
     "description":"[options] Page title for site options"
   },
   "optSectionSitesEnabled":{
-    "message":"Webbadresser där Hover Zoom+ måste vara aktiverad",
+    "message":"Webbadresser där Hover Zoom GOLD! måste vara aktiverad",
     "description":"[options] Page section for enabling extension for specific sites"
   },
   "optSectionSitesDisabled":{
-    "message":"Webbadresser där Hover Zoom+ måste vara inaktiverad",
+    "message":"Webbadresser där Hover Zoom GOLD! måste vara inaktiverad",
     "description":"[options] Page section for enabling extension for specific sites"
   },
   "optWhitelistMode":{
@@ -236,7 +236,7 @@
     "description":"[options] Whitelist mode checkbox"
   },
   "optWhitelistModeTooltip":{
-    "message":"Aktivera bara Hover Zoom+ för de sidor som anges nedan",
+    "message":"Aktivera bara Hover Zoom GOLD! för de sidor som anges nedan",
     "description":"[options] Tooltip for whitelist mode checkbox"
   },
   "optSitePlaceholder":{
@@ -296,15 +296,15 @@
     "description":"[options] Unit name (percentage) for opacity option"
   },
   "optActionKeyTitle":{
-    "message":"Aktivera Hover Zoom+",
+    "message":"Aktivera Hover Zoom GOLD!",
     "description":"[options] Action key title"
   },
   "optActionKeyDescription":{
-    "message":"Om en knapp är angiven kan Hover Zoom+ endast fungera medan denna är nedtryckt.",
+    "message":"Om en knapp är angiven kan Hover Zoom GOLD! endast fungera medan denna är nedtryckt.",
     "description":"[options] Action key description"
   },
   "optHideKeyTitle":{
-    "message":"Inaktivera Hover Zoom+",
+    "message":"Inaktivera Hover Zoom GOLD!",
     "description":"[options] Action key title"
   },
   "optHideKeyDescription":{

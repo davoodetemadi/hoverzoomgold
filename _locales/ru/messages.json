@@ -1,6 +1,6 @@
 {
   "extName":{
-    "message":"Hover Zoom+",
+    "message":"Hover Zoom GOLD!",
     "description":"Extension name"
   },
   "extShortName":{
@@ -12,7 +12,7 @@
     "description":"Extension description in Chrome webstore (max. 132 characters)"
   },
   "extUpdated":{
-    "message":"Hover Zoom+ был обновлен",
+    "message":"Hover Zoom GOLD! был обновлен",
     "description":"Extension update notification"
   },
   "popDisableForAllSites":{
@@ -44,7 +44,7 @@
     "description":"[popup] More options"
   },
   "optTitle":{
-    "message":"Настройки Hover Zoom+",
+    "message":"Настройки Hover Zoom GOLD!",
     "description":"[options] Page title"
   },
   "optButtonSave":{
@@ -65,7 +65,7 @@
   },
   "optExtensionEnabled":{
     "message":"Включить Hover Zoom",
-    "description":"[options] Enable Hover Zoom+ option"
+    "description":"[options] Enable Hover Zoom GOLD! option"
   },
   "optSectionView":{
     "message":"Просмотр",
@@ -252,11 +252,11 @@
     "description":"[options] Page title for site options"
   },
   "optSectionSitesEnabled":{
-    "message":"URL-адреса, для которых Hover Zoom+ должен быть включен",
+    "message":"URL-адреса, для которых Hover Zoom GOLD! должен быть включен",
     "description":"[options] Page section for enabling extension for specific sites"
   },
   "optSectionSitesDisabled":{
-    "message":"URL-адреса, для которых Hover Zoom+ должен быть выключен",
+    "message":"URL-адреса, для которых Hover Zoom GOLD! должен быть выключен",
     "description":"[options] Page section for enabling extension for specific sites"
   },
   "optWhitelistMode":{
@@ -264,7 +264,7 @@
     "description":"[options] Whitelist mode checkbox"
   },
   "optWhitelistModeTooltip":{
-    "message":"Включить Hover Zoom+ только для сайтов, перечисленных ниже",
+    "message":"Включить Hover Zoom GOLD! только для сайтов, перечисленных ниже",
     "description":"[options] Tooltip for whitelist mode checkbox"
   },
   "optSitePlaceholder":{
@@ -324,15 +324,15 @@
     "description":"[options] Unit name (percentage) for opacity option"
   },
   "optActionKeyTitle":{
-    "message":"Активировать Hover Zoom+",
+    "message":"Активировать Hover Zoom GOLD!",
     "description":"[options] Action key title"
   },
   "optActionKeyDescription":{
-    "message":"Если включено, то Hover Zoom+ будет активным только тогда, когда эта клавиша удерживается нажатой.",
+    "message":"Если включено, то Hover Zoom GOLD! будет активным только тогда, когда эта клавиша удерживается нажатой.",
     "description":"[options] Action key description"
   },
   "optHideKeyTitle":{
-    "message":"Отключить Hover Zoom+",
+    "message":"Отключить Hover Zoom GOLD!",
     "description":"[options] Action key title"
   },
   "optHideKeyDescription":{

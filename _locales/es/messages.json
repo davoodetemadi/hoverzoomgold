@@ -1,6 +1,6 @@
 {
   "extName":{
-    "message":"Hover Zoom+",
+    "message":"Hover Zoom GOLD!",
     "description":"Extension name"
   },
   "extShortName":{
@@ -12,7 +12,7 @@
     "description":"Extension description in Chrome webstore (max. 132 characters)"
   },
   "extUpdated":{
-    "message":"Hover Zoom+ Ha sido actualizado",
+    "message":"Hover Zoom GOLD! Ha sido actualizado",
     "description":"Extension update notification"
   },
   "popDisableForAllSites":{
@@ -44,7 +44,7 @@
     "description":"[popup] More options"
   },
   "optTitle":{
-    "message":"Opciones de Hover Zoom+",
+    "message":"Opciones de Hover Zoom GOLD!",
     "description":"[options] Page title"
   },
   "optButtonSave":{
@@ -65,7 +65,7 @@
   },
   "optExtensionEnabled":{
     "message":"Habilitar Hover Zoom",
-    "description":"[options] Enable Hover Zoom+ option"
+    "description":"[options] Enable Hover Zoom GOLD! option"
   },
   "optSectionView":{
     "message":"Mostrar",
@@ -216,11 +216,11 @@
     "description":"[options] Page title for site options"
   },
   "optSectionSitesEnabled":{
-    "message":"Direcciones URL en las que Hover Zoom+ debe estar habilitado",
+    "message":"Direcciones URL en las que Hover Zoom GOLD! debe estar habilitado",
     "description":"[options] Page section for enabling extension for specific sites"
   },
   "optSectionSitesDisabled":{
-    "message":"Direcciones URL en las que Hover Zoom+ debe estar desactivado",
+    "message":"Direcciones URL en las que Hover Zoom GOLD! debe estar desactivado",
     "description":"[options] Page section for enabling extension for specific sites"
   },
   "optWhitelistMode":{
@@ -288,7 +288,7 @@
     "description":"[options] Unit name (percentage) for opacity option"
   },
   "optActionKeyTitle":{
-    "message":"Activar Hover Zoom+",
+    "message":"Activar Hover Zoom GOLD!",
     "description":"[options] Action key title"
   },
   "optActionKeyDescription":{
@@ -296,7 +296,7 @@
     "description":"[options] Action key description"
   },
   "optHideKeyTitle":{
-    "message":"Desactivar Hover Zoom+",
+    "message":"Desactivar Hover Zoom GOLD!",
     "description":"[options] Action key title"
   },
   "optHideKeyDescription":{
