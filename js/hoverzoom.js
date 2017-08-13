@@ -258,7 +258,7 @@ var hoverZoom = {
                 url = url.substr(0, url.lastIndexOf('?'));
             var ext = url.substr(url.length - 4).toLowerCase();
             includeGifs = includeGifs || false;
-            return (includeGifs && (ext == '.gif' || ext == 'gifv')) || ext == 'webm' || ext == '.mp4' || ext == '3gpp' || url.indexOf('googlevideo.com/videoplayback') > 0;
+            return (includeGifs && (ext == '.gif' || ext == 'gifv')) || ext == 'webm' || ext == '.mp4' || ext == '3gpp' || url.indexOf('googlevideo.com/videoplayback') > 0 || url.indexOf('v.redd.it') > 0;
         }
 
         function updateAmbilight() {
@@ -488,7 +488,7 @@ var hoverZoom = {
                     });
                     video.load();
                 } else {
-                    imgFullSize = $('<img style="border: none" />').appendTo(hz.hzImg).load(imgFullSizeOnLoad).error(imgFullSizeOnError).attr('src', imgDetails.url);
+                    imgFullSize = $('<img style="border: none" />').appendTo(hz.hzImg).on('load',imgFullSizeOnLoad).on('error',imgFullSizeOnError).attr('src', imgDetails.url);
                 }
 
                 imgDetails.host = getHostFromUrl(imgDetails.url);
@@ -647,7 +647,9 @@ var hoverZoom = {
             setTimeout(posImg, options.showWhileLoading ? 0 : 10);
 
             if (options.addToHistory && !chrome.extension.inIncognitoContext) {
-                var url = hz.currentLink.context.href || imgDetails.url;
+                var url = hz.currentLink.attr('href') || imgDetails.url;
+                if (url.startsWith('/') && url.indexOf('http') < 0)
+                    url = window.location.protocol + '//' + window.location.hostname + url;
                 chrome.runtime.sendMessage({action:'addUrlToHistory', url:url});
             }
             chrome.runtime.sendMessage({action:'trackEvent', event:{category:'Actions', action:'ImageDisplayedOnSite', label:document.location.host}});
@@ -916,7 +918,7 @@ var hoverZoom = {
                         return;
                     }
 
-                    hzDownscaled.load(function () {
+                    hzDownscaled.on('load',function () {
                         setTimeout(function () {
                             if (hzDownscaled.height() > heightAttr * 1.8 || hzDownscaled.width() > widthAttr * 1.8) {
                                 var srcs = img.data().hoverZoomSrc || [];
@@ -1025,7 +1027,7 @@ var hoverZoom = {
         }
 
         function bindEvents() {
-            wnd.bind('DOMNodeInserted', windowOnDOMNodeInserted).load(windowOnLoad).scroll(cancelImageLoading).blur(cancelImageLoading);
+            wnd.bind('DOMNodeInserted', windowOnDOMNodeInserted).on('load',windowOnLoad).scroll(cancelImageLoading).blur(cancelImageLoading);
             $(document).mousemove(documentMouseMove).mousedown(documentMouseDown).keydown(documentOnKeyDown).keyup(documentOnKeyUp).mouseleave(cancelImageLoading);
             if (options.galleriesMouseWheel) {
                 $(document).on('mousewheel', documentOnMouseWheel);
@@ -1296,7 +1298,7 @@ var hoverZoom = {
         function loadNextGalleryImage() {
             clearTimeout(loadFullSizeImageTimeout);
             imgDetails.url = hz.currentLink.data().hoverZoomSrc[hz.currentLink.data().hoverZoomSrcIndex];
-            imgFullSize.load(nextGalleryImageOnLoad).error(loadNextGalleryImage).attr('src', imgDetails.url);
+            imgFullSize.on('load', nextGalleryImageOnLoad).on('error', loadNextGalleryImage).attr('src', imgDetails.url);
         }
 
         function nextGalleryImageOnLoad() {
@@ -1355,7 +1357,7 @@ var hoverZoom = {
         // In case we are being used on a website that removes us from the DOM, update the internal data structure to reflect this
         var target = document.getElementsByTagName('html')[0];
         var obs = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) { 
+            mutations.forEach(function(mutation) {
                 if (mutation.removedNodes.length > 0) {
                     if (mutation.removedNodes[0].querySelector('#hzImg')) {
                         hoverZoom.hzImg = false;
@@ -1475,11 +1477,11 @@ var hoverZoom = {
                 chrome.runtime.sendMessage({action:'preloadProgress', value:preloadIndex, max:links.length});
             } else {
                 var hoverZoomSrcIndex = link.data().hoverZoomSrcIndex || 0;
-                $('<img src="' + link.data().hoverZoomSrc[hoverZoomSrcIndex] + '">').load(function () {
+                $('<img src="' + link.data().hoverZoomSrc[hoverZoomSrcIndex] + '">').on('load',function () {
                     link.data().hoverZoomPreloaded = true;
                     setTimeout(preloadNextImage, preloadDelay);
                     chrome.runtime.sendMessage({action:'preloadProgress', value:preloadIndex, max:links.length});
-                }).error(function () {
+                }).on('error', function () {
                         if (hoverZoomSrcIndex < link.data().hoverZoomSrc.length - 1) {
                             link.data().hoverZoomSrcIndex++;
                             preloadIndex--;

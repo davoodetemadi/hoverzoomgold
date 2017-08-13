@@ -1,7 +1,7 @@
 {
     "name": "__MSG_extName__",
     "short_name": "__MSG_extShortName__",
-    "version": "1.0.112",
+    "version": "1.0.123",
     "description": "__MSG_extDescription__",
     "homepage_url": "https://github.com/superlime/hoverzoomgold/",
     "author": "superlime",
@@ -24,7 +24,7 @@
         "chrome_style": false,
         "open_in_tab": true
     },
-    "browser_action": {
+    "page_action": {
         "default_icon": {
             "19": "images/icon19.png"
         },
@@ -43,7 +43,7 @@
     "web_accessible_resources": [
         "images/loading.gif",
         "js/libs/gumby.min.js",
-        "js/libs/jquery-2.1.1.min.js",
+        "js/libs/jquery-3.2.1.min.js",
         "js/libs/jquery.mobile.custom.min.js",
         "js/libs/modernizr-2.7.1.min.js",
         "js/common.js",
@@ -51,7 +51,7 @@
     ],
     "content_scripts": [
         {
-            "js": ["js/libs/contentScriptsAPIBridge.js", "js/libs/jquery-2.1.1.min.js", "js/tools.js", "js/plugins.js", "plugins/default.js"],
+            "js": [ "js/libs/jquery-3.2.1.min.js", "js/libs/contentScriptsAPIBridge.js", "js/tools.js", "js/plugins.js", "plugins/default.js", "js/hoverzoom.js"],
             "matches": ["<all_urls>"],
             "all_frames": true
         },
@@ -1456,11 +1456,6 @@
         {
             "js": ["plugins/drawcrowd.js"],
             "matches": ["*://*.drawcrowd.com/*"]
-        },
-        {
-            "js": ["js/hoverzoom.js"],
-            "matches": ["<all_urls>"],
-            "all_frames": true
         }
    ]
 }
