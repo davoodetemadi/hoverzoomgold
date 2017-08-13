@@ -5,7 +5,7 @@ function loadOptions() {
     if (localStorage.options == null) {
         localStorage.options = '{}';
     }
-    options = JSON.parse(localStorage.options);  // TODO: Migrate to https://developer.chrome.com/extensions/storage
+    options = JSON.parse(localStorage.options); // TODO: Migrate to https://developer.chrome.com/extensions/storage
 
     options.extensionEnabled = options.hasOwnProperty('extensionEnabled') ? options.extensionEnabled : true;
     options.zoomFactor = options.hasOwnProperty('zoomFactor') ? options.zoomFactor : 1;
@@ -46,9 +46,9 @@ function loadOptions() {
     options.actionKey = options.hasOwnProperty('actionKey') ? options.actionKey : 0;
     options.fullZoomKey = options.hasOwnProperty('fullZoomKey') ? options.fullZoomKey : 90;
     options.hideKey = options.hasOwnProperty('hideKey') ? options.hideKey : 88;
-    options.openImageInWindowKey = options.hasOwnProperty('openImageInWindowKey') ? options.openImageInWindowKey : 87;
-    options.openImageInTabKey = options.hasOwnProperty('openImageInTabKey') ? options.openImageInTabKey : 84;
-    options.saveImageKey = options.hasOwnProperty('saveImageKey') ? options.saveImageKey : 83;
+    options.openImageInWindowKey = options.hasOwnProperty('openImageInWindowKey') ? options.openImageInWindowKey : 0;
+    options.openImageInTabKey = options.hasOwnProperty('openImageInTabKey') ? options.openImageInTabKey : 0;
+    options.saveImageKey = options.hasOwnProperty('saveImageKey') ? options.saveImageKey : 0;
     options.prevImgKey = options.hasOwnProperty('prevImgKey') ? options.prevImgKey : 37;
     options.nextImgKey = options.hasOwnProperty('nextImgKey') ? options.nextImgKey : 39;
 
@@ -59,12 +59,12 @@ function loadOptions() {
 
 // Send options to all tabs and extension pages
 function sendOptions(options) {
-    var request = {action:'optionsChanged', 'options':options};
+    var request = { action: 'optionsChanged', 'options': options };
 
     // Send options to all tabs
-    chrome.windows.getAll(null, function (windows) {
+    chrome.windows.getAll(null, function(windows) {
         for (var i = 0; i < windows.length; i++) {
-            chrome.tabs.getAllInWindow(windows[i].id, function (tabs) {
+            chrome.tabs.getAllInWindow(windows[i].id, function(tabs) {
                 for (var j = 0; j < tabs.length; j++) {
                     chrome.tabs.sendMessage(tabs[j].id, request);
                 }
@@ -119,7 +119,7 @@ function showUpdateNotification() {
             message: '',
             iconUrl: '/images/icon32.png',
             items: [
-                { title: "Rebased on HoverZoom 1.0.112 source", message: "" },
+                { title: "Rebased on HoverZoom+ 1.0.123 source", message: "Updated to HoverZoom+ 1.0.123 source, default a bunch of action keys to off." },
             ]
         };
         chrome.notifications.create(chrome.i18n.getMessage('extName'), options, function(id) {});
