@@ -89,6 +89,7 @@ function saveOptions() {
     options.fadeDuration = getMilliseconds($('#txtFadeDuration'));
     options.ambilightEnabled = $('#chkAmbilightEnabled')[0].checked;
     options.centerImages = $('#chkCenterImages')[0].checked;
+    options.frameBackgroundColor = $('#pickerFrameBackgroundColor')[0].value;
 
     options.whiteListMode = $('#chkWhiteListMode')[0].checked;
     options.numberOfCaptionLines = $('#txtMaxCaptionLines')[0].value;
@@ -149,7 +150,14 @@ function restoreOptions() {
     $('#txtFadeDuration').val((options.fadeDuration || 0) / 1000);
     $('#chkAmbilightEnabled')[0].checked = options.ambilightEnabled;
     $('#chkCenterImages')[0].checked = options.centerImages;
+    $('#pickerFrameBackgroundColor').val(options.frameBackgroundColor);
     $('#selectCaptionLocation').val(options.captionLocation);
+
+    if (options.frameBackgroundColor == "") {
+        initColorPicker('#ffffff');
+    } else {
+        initColorPicker(options.frameBackgroundColor);
+    }
 
     $('#chkWhiteListMode')[0].checked = options.whiteListMode;
     $('#selExcludedSites').empty();
@@ -253,23 +261,24 @@ function onMessage(message, sender, callback) {
 }
 
 function getPlugins(callback) {
-    chrome.runtime.getPackageDirectoryEntry(function(root) {
-        root.getDirectory("plugins", {create: false}, function(pluginsdir) {
-            var reader = pluginsdir.createReader();
-            var entries = [];
-            var readEntries = function() {
-                reader.readEntries(function(results) {
-                    if (results.length) {
-                        entries = entries.concat(results.map(function(de){return de.name;}));
-                        readEntries();
-                    } else {
-                        callback(entries);
-                    }
-                });
-            };
-            readEntries();
-        });
-    });
+    const plugins = [];
+    const manifest = chrome.runtime.getManifest();
+
+    manifest.content_scripts.forEach(script => script.js.forEach((path) => {
+        // Path can look like this on Firefox
+        // 'moz-extension://d5438889-adf3-4ed5-89b3-caacec62961b/plugins/skyrock.js'
+        // or like this on Chrome
+        // 'plugins/skyrock.js'
+
+        const split = path.split('/');
+
+        if (split.includes('plugins')) {
+            plugins.push(split[split.length - 1]);
+        }
+    }));
+
+    plugins.sort();
+    callback(plugins);
 }
 
 function loadPlugins() {
@@ -294,11 +303,23 @@ function populatePluginsTable() {
     Gumby.initialize('checkbox');
 }
 
+function initColorPicker(color){
+    var colorPicker = $('#pickerFrameBackgroundColor').spectrum({
+        color: color,
+        preferredFormat: "hex",
+        chooseText: chrome.i18n.getMessage("optFrameBackgroundColorChooseText"),
+        cancelText: chrome.i18n.getMessage("optFrameBackgroundColorCancelText"),
+        change: function(color) {
+            $('#pickerFrameBackgroundColor').attr('value', color.toHexString());
+        }
+    })
+}
+
 $(function () {
     initActionKeys();
     i18n();
     chkWhiteListModeOnChange();
-    $("#version").text(chrome.i18n.getMessage("optFooterVersionCopyright", chrome.app.getDetails().version));
+    $("#version").text(chrome.i18n.getMessage("optFooterVersionCopyright", chrome.runtime.getManifest().version));
 
     $('#btnSave').click(saveOptions);
     $('#btnReset').click(restoreOptions);
