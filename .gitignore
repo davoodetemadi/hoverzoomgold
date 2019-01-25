@@ -40,3 +40,5 @@ node_modules/
 
 # vs config dirs
 /**/.vs/**
+
+web-ext-artifacts
