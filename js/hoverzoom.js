@@ -247,11 +247,15 @@ var hoverZoom = {
         function isThisReddit(host) {
             return /reddit\.com/gi.test(host);
         }
-
-
-        // Quick check to see if the current site is reddit (for visited link tracking)
-        function isThisReddit(host) {
-            return /reddit\.com/gi.test(host);
+        
+        function storeRedditVisit(id) {
+            $.ajax({
+                type: "POST",
+                url: "/api/store_visits",
+                headers: { "X-Modhash": $("[name='uh']")[0].value },
+                data: {
+                    links: id
+                }})
         }
 
         function isVideoLink(url, includeGifs) {
@@ -633,7 +637,6 @@ var hoverZoom = {
                     if (!isNaN(options.maxCaptionHeight)) {
                         hzCaptionCss['max-height'] = options.maxCaptionHeight + 'px';
                     }
-
                     if (options.captionLocation === "below") {
                         hzCaption = $('<div/>', {id:'hzCaption', text:linkData.hoverZoomCaption}).css(hzCaptionCss).appendTo(hz.hzImg);
                     } else if (options.captionLocation === "above") {
@@ -673,17 +676,7 @@ var hoverZoom = {
                 {
                     var thing = hz.currentLink.closest('.thing');
                     var fullname = thing.data().fullname;
-                    // form search selector so that the injected script can find the right node
-                    var selector = '.id-' + fullname + ' a.title';
-                    // inject simple script to trigger a 'visit' event on the right node. Figuring this part out took
-                    // waaaaaaaaaay longer than it should have.  :P  turns out chrome enforces weird security for
-                    // extensions that are implemented as 'content' scripts, and this is the best documented way 
-                    // around it.
-                    var scriptToInject = function (thingSelector) { $(thingSelector).trigger('visit'); };
-                    var actualCode = '(' + scriptToInject + ')(' + JSON.stringify(selector) + ')';
-                    document.documentElement.setAttribute('onreset', actualCode);
-                    document.documentElement.dispatchEvent(new CustomEvent('reset'));
-                    document.documentElement.removeAttribute('onreset');
+                    storeRedditVisit(fullname);
                 }
             }
         }
@@ -714,8 +707,7 @@ var hoverZoom = {
                 } else {
                     hideHoverZoomImg();
                     //hz.currentLink.removeClass('hoverZoomLink').removeData();
-                    console.warn('[HoverZoom] Failed to load image: ' + imgDetails.url);
-                    chrome.runtime.sendMessage({action:'trackEvent', event:{category:'Errors', action:'LoadingErrorFromSite', label:imgDetails.host}});
+                    console.warn('[HoverZoom] Failed to load image: ' + src);
                 }
             }
         }
