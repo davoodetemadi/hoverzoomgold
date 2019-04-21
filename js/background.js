@@ -24,19 +24,8 @@ function ajaxRequest(request, callback) {
 
 function onMessage(message, sender, callback) {
     switch (message.action) {
-        case 'downloadFile':
-            chrome.permissions.request({
-                permissions: ['downloads']
-            }, function (granted) {
-                if (granted) {
-                    chrome.downloads.download({url: message.url, filename: message.filename});
-                    return true;
-                } else {
-                    return false;
-                }
-            });
         case 'ajaxGet':
-            ajaxRequest({url: message.url, method: 'GET'}, callback);
+            ajaxRequest({url:message.url, method:'GET'}, callback);
             return true;
         case 'ajaxRequest':
             ajaxRequest(message, callback);
@@ -78,7 +67,7 @@ function onMessage(message, sender, callback) {
             break;
         case 'openViewWindow':
             var url = message.createData.url;
-            if (url.indexOf('facebook.com/photo/download') !== -1) {
+            if (url.indexOf('facebook.com/photo/download') != -1) {
                 message.createData.url = 'data:text/html,<img src="' + url + '">';
             }
             chrome.windows.create(message.createData, function (window) {
@@ -86,12 +75,12 @@ function onMessage(message, sender, callback) {
             });
             break;
         case 'openViewTab':
-            chrome.tabs.query({active: true}, function (tabs) {
-                message.createData.index = tabs[0].index;
+            chrome.tabs.getSelected(null, function (currentTab) {
+                message.createData.index = currentTab.index;
                 if (!message.createData.active)
                     message.createData.index++;
                 var url = message.createData.url;
-                if (url.indexOf('facebook.com/photo/download') !== -1) {
+                if (url.indexOf('facebook.com/photo/download') != -1) {
                     message.createData.url = 'data:text/html,<img src="' + url + '">';
                 }
                 chrome.tabs.create(message.createData, function (tab) {
@@ -119,7 +108,7 @@ function showPageAction(tab) {
 function checkUpdate() {
     currVersion = 1;
     if ("app" in chrome) {
-        var currVersion = chrome.runtime.getManifest().version,
+        var currVersion = chrome.app.getDetails().version,
             prevVersion = localStorage.hzVersion;
         if (hasReleaseNotes && options.updateNotifications && currVersion != prevVersion && typeof prevVersion != 'undefined') {
             showUpdateNotification();

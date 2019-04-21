@@ -21,6 +21,7 @@ var hoverZoom = {
         'position':'absolute',
         'z-index':2147483647,
         'border-radius':'3px',
+        'background':'linear-gradient(to right bottom, #ffffff, #ffffff 50%, #ededed)',
         'box-shadow':'3px 3px 9px 5px rgba(0,0,0,0.33)'
     },
     imgLoading:null,
@@ -123,7 +124,7 @@ var hoverZoom = {
             if (position === undefined || position.top === undefined || position.left === undefined) {
                 position = {top:mousePos.top, left:mousePos.left};
             }
-            
+
             var offset = 20,
                 padding = 10,
                 statusBarHeight = 15,
@@ -239,8 +240,6 @@ var hoverZoom = {
             } else {
                 hz.hzImg.css({top:Math.round(position.top), left:Math.round(position.left)});
             }
-
-            frameBackgroundColor(options.frameBackgroundColor);
         }
 
         // Quick check to see if the current site is reddit (for visited link tracking)
@@ -326,18 +325,6 @@ var hoverZoom = {
             });
             titledElements = null;
         }
-    
-        //Set frame background color and border to match chosen option
-        function frameBackgroundColor(color) {
-            hz.hzImg.css('background-color', color);
-            hz.hzImg.css('border-color', color);
-
-            color = color.toString().substr(1);
-            var textColor = parseInt(color, 16) > 0xffffff/2 ? '#333':'#f0f0f0';        
-            
-            //change text color based on frame background color
-            hzCaptionCss.color = textColor;
-        }
 
         function hideHoverZoomImg(now) {
             cLog('hideHoverZoomImg(' + now + ')');
@@ -418,13 +405,16 @@ var hoverZoom = {
                             var src = links.data().hoverZoomSrc[hoverZoomSrcIndex];
                             if (src.indexOf('http') !== 0) {
                                 if (src.indexOf('//') !== 0) {
-                                    if (src.indexOf('/') !== 0) {
+                                    if (src.indexOf('/') === 0) {
+                                        // Image has absolute path (starts with '/')
+                                        src = src.substr(1);
+                                    } else {
                                         // Image has relative path (doesn't start with '/')
                                         var path = window.location.pathname;
                                         path = path.substr(0, path.lastIndexOf('/') + 1);
                                         src = path + src;
                                     }
-                                    src = '//' + window.location.host + src;
+                                    src = '//' + window.location.host + '/' + src;
                                 }
                                 src = window.location.protocol + src;
                                 links.data().hoverZoomSrc[hoverZoomSrcIndex] = src;
@@ -1274,34 +1264,16 @@ var hoverZoom = {
             });
         }
 
-        //stackoverflow.com/questions/49474775/chrome-65-blocks-cross-origin-a-download-client-side-workaround-to-force-down
-        function forceDownload(blob, filename) {
-          var a = document.createElement('a');
-          a.download = filename;
-          a.href = blob;
-          a.click();
-        }
-
-        // Current blob size limit is around 500MB for browsers
-        function downloadResource(url, filename) {
-          if (!filename) filename = url.split('\\').pop().split('/').pop();
-          fetch(url, {
-              headers: new Headers({
-                'Origin': location.origin
-              }),
-              mode: 'cors'
-            })
-            .then(response => response.blob())
-            .then(blob => {
-              let blobUrl = window.URL.createObjectURL(blob);
-              forceDownload(blobUrl, filename);
-            })
-            .catch(e => console.error(e));
-        }
-
         function saveImage() {
-            var filename = imgDetails.url.split('/').pop().split('?')[0];
-            downloadResource(imgDetails.url, filename);
+            var a = document.createElement('a');
+            a.href = imgDetails.url;
+            a.download = imgDetails.url.split('/').pop().split('?')[0];
+            if (!a.download) {
+                a.download = 'image.jpg';
+            }
+            var clickEvent = document.createEvent('MouseEvent');
+            clickEvent.initEvent('click', true, true, window, 1, 0, 0, 0, 0, false, false, false, false, 0, null);
+            a.dispatchEvent(clickEvent);
         }
 
         function rotateGalleryImg(rot) {
@@ -1326,7 +1298,7 @@ var hoverZoom = {
         function loadNextGalleryImage() {
             clearTimeout(loadFullSizeImageTimeout);
             imgDetails.url = hz.currentLink.data().hoverZoomSrc[hz.currentLink.data().hoverZoomSrcIndex];
-            imgFullSize.on('load', nextGalleryImageOnLoad).on('error', imgFullSizeOnError).attr('src', imgDetails.url);
+            imgFullSize.on('load', nextGalleryImageOnLoad).on('error', loadNextGalleryImage).attr('src', imgDetails.url);
         }
 
         function nextGalleryImageOnLoad() {
@@ -1536,18 +1508,6 @@ var hoverZoom = {
         });
     },
 
-    prepareLink:function (link, src) {
-        if (Array.isArray(src)) {
-            link.data().hoverZoomGallerySrc = src;
-            link.data().hoverZoomGalleryIndex = 0;
-            link.data().hoverZoomSrc = src[0];
-        } else {
-            link.data().hoverZoomSrc = [src];
-        }
-        link.addClass('hoverZoomLink');
-        hoverZoom.displayPicFromElement(link);
-    },
-
     prepareFromDocument:function (link, url, getSrc) {
         url = url.replace('http:', location.protocol);
         $.get(url, function(data) {
@@ -1564,8 +1524,17 @@ var hoverZoom = {
                 }
             }
             var src = getSrc(doc);
-            if (src)
-                hoverZoom.prepareLink(link, src);
+            if (src) {
+                if (Array.isArray(src)) {
+                    link.data().hoverZoomGallerySrc = src;
+                    link.data().hoverZoomGalleryIndex = 0;
+                    link.data().hoverZoomSrc = src[0];
+                } else {
+                    link.data().hoverZoomSrc = [src];
+                }
+                link.addClass('hoverZoomLink');
+                hoverZoom.displayPicFromElement(link);
+            }
         });
     }
 };

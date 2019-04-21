@@ -1,13 +1,13 @@
 ﻿var hoverZoomPlugins = hoverZoomPlugins || [];
 hoverZoomPlugins.push({
-    name:'LinkedIn',
+    name:'So.cl',
     version:'0.1',
     prepareImgLinks:function (callback) {
         var res = [];
         hoverZoom.urlReplace(res,
-            'img[src*="/shrink_"]',
-            /\/shrink_.*?\//,
-            '/'
+            'img[src*="handlers/thumbnail"]',
+            /.*[\?&]url=([^&]+).*/,
+            '$1'
         );
         callback($(res));
     }

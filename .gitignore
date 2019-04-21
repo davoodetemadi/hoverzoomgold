@@ -37,8 +37,3 @@ com_crashlytics_export_strings.xml
 
 # npm modules
 node_modules/
-
-# vs config dirs
-/**/.vs/**
-
-web-ext-artifacts
