@@ -52,6 +52,7 @@ var hoverZoom = {
 
         var imgDetails = {
                 url:'',
+                audioUrl:'',
                 host:'',
                 naturalHeight:0,
                 naturalWidth:0,
@@ -330,6 +331,26 @@ var hoverZoom = {
             titledElements = null;
         }
 
+        //Set frame background color and border to match chosen option
+        function frameBackgroundColor(color) {
+            hz.hzImg.css('background-color', color);
+            hz.hzImg.css('border-color', color);
+
+            color = color.toString().substr(1);
+            var textColor = parseInt(color, 16) > 0xffffff/2 ? '#333':'#f0f0f0';
+
+            //change text color based on frame background color
+            hzCaptionCss.color = textColor;
+        }
+
+        function stopMedia(selector) {
+            var el = hz.hzImg.find(selector).get(0);
+            if (el) {
+                el.pause();
+                el.src = '';
+            }
+        }
+
         function hideHoverZoomImg(now) {
             cLog('hideHoverZoomImg(' + now + ')');
             if ((!now && !imgFullSize) || !hz.hzImg || fullZoomKeyDown) {
@@ -340,17 +361,37 @@ var hoverZoom = {
                 now = true;
             }
             hz.hzImg.stop(true, true).fadeOut(now ? 0 : options.fadeDuration, function () {
-                var video = hz.hzImg.find('video').get(0);
-                if (video) {
-                    video.pause();
-                    video.src = "";
-                }
+                stopMedia('video');
+                stopMedia('audio');
                 hzCaption = null;
                 hz.imgLoading = null;
                 hz.hzImg.empty();
                 restoreTitles();
             });
             //chrome.runtime.sendMessage({action: 'viewWindow', visible: false});
+        }
+
+        function normalizeSrc(hoverZoomSrcIndex, links, dataKey) {
+            var data = links.data()[dataKey];
+            if (!data) {
+                return undefined;
+            }
+
+            var src = data[hoverZoomSrcIndex];
+            if (src && src.indexOf('http') !== 0) {
+                if (src.indexOf('//') !== 0) {
+                    if (src.indexOf('/') !== 0) {
+                        // Image has relative path (doesn't start with '/')
+                        var path = window.location.pathname;
+                        path = path.substr(0, path.lastIndexOf('/') + 1);
+                        src = path + src;
+                    }
+                    src = '//' + window.location.host + src;
+                }
+                src = window.location.protocol + src;
+                links.data()[dataKey][hoverZoomSrcIndex] = src;
+            }
+            return src;
         }
 
         function documentMouseMove(event) {
@@ -406,7 +447,8 @@ var hoverZoom = {
                         hz.currentLink = links;
                         //initLinkRect(hz.currentLink);
                         if (!options.actionKey || actionKeyDown) {
-                            var src = links.data().hoverZoomSrc[hoverZoomSrcIndex];
+                            var src = normalizeSrc(hoverZoomSrcIndex, links, 'hoverZoomSrc');
+                            var audioSrc = normalizeSrc(hoverZoomSrcIndex, links, 'hoverZoomAudioSrc');
                             if (src.indexOf('http') !== 0) {
                                 if (src.indexOf('//') !== 0) {
                                     if (src.indexOf('/') === 0) {
@@ -433,6 +475,7 @@ var hoverZoom = {
                             }
 
                             imgDetails.url = src;
+                            imgDetails.audioUrl = audioSrc;
                             clearTimeout(loadFullSizeImageTimeout);
 
                             // If the action key has been pressed over an image, no delay is applied
@@ -490,6 +533,30 @@ var hoverZoom = {
                         video.play();
                         video.removeAttribute('poster');
                     });
+
+                    if (imgDetails.audioUrl) {
+                        var audio = document.createElement('audio');
+                        audio.autoplay = false;
+                        audio.muted = options.muteVideos;
+                        audio.volume = options.videoVolume;
+                        audio.src = imgDetails.audioUrl;
+                        $(audio).appendTo(imgFullSize);
+
+                        video.addEventListener('play', function() {
+                            audio.play();
+                        });
+
+                        video.addEventListener('seeked', function() {
+                            audio.currentTime = video.currentTime;
+                        });
+
+                        video.addEventListener('volumechange', function() {
+                            audio.volume = video.volume;
+                        });
+
+                        audio.load();
+                    }
+
                     video.load();
                 } else {
                     imgFullSize = $('<img style="border: none" />').appendTo(hz.hzImg).on('load',imgFullSizeOnLoad).on('error',imgFullSizeOnError).attr('src', imgDetails.url);
@@ -1022,7 +1089,7 @@ var hoverZoom = {
             wnd.bind('DOMNodeInserted', windowOnDOMNodeInserted).on('load',windowOnLoad).scroll(cancelImageLoading).blur(cancelImageLoading);
             $(document).mousemove(documentMouseMove).mousedown(documentMouseDown).keydown(documentOnKeyDown).keyup(documentOnKeyUp).mouseleave(cancelImageLoading);
             if (options.galleriesMouseWheel) {
-                $(document).on('mousewheel', documentOnMouseWheel);
+                window.addEventListener('wheel', documentOnMouseWheel, {passive: false});
             }
             if (options.zoomVideos) {
                 $(document).on('visibilitychange', hideHoverZoomImg);
@@ -1034,7 +1101,7 @@ var hoverZoom = {
                 var link = hz.currentLink, data = link.data();
                 if (data.hoverZoomGallerySrc && data.hoverZoomGallerySrc.length !== 1) {
                     event.preventDefault();
-                    if (event.originalEvent.wheelDeltaY > 0) {
+                    if (event.wheelDeltaY > 0) {
                         rotateGalleryImg(-1);
                     } else {
                         rotateGalleryImg(1);
@@ -1043,7 +1110,7 @@ var hoverZoom = {
                     var video = hz.hzImg.find('video').get(0);
                     if (video && !options.disableMouseWheelForVideo) {
                         event.preventDefault();
-                        if (event.originalEvent.wheelDeltaY > 0) {
+                        if (event.wheelDeltaY > 0) {
                             changeVideoPosition(-parseInt(options.videoPositionStep));
                         } else {
                             changeVideoPosition(parseInt(options.videoPositionStep));
@@ -1502,7 +1569,7 @@ var hoverZoom = {
 
     prepareFromDocument:function (link, url, getSrc) {
         url = url.replace('http:', location.protocol);
-        $.get(url, function(data) {
+        chrome.runtime.sendMessage({action:'ajaxRequest', url: url, method: 'GET'}, function(data) {
             var doc = document.implementation.createHTMLDocument();
             doc.open();
             doc.write(data);

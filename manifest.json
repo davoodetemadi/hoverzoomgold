@@ -1,7 +1,7 @@
 {
     "name": "__MSG_extName__",
     "short_name": "__MSG_extShortName__",
-    "version": "1.0.123",
+    "version": "1.0.136",
     "description": "__MSG_extDescription__",
     "homepage_url": "https://github.com/superlime/hoverzoomgold/",
     "author": "superlime",
@@ -1456,6 +1456,18 @@
         {
             "js": ["plugins/drawcrowd.js"],
             "matches": ["*://*.drawcrowd.com/*"]
+        },
+        {
+            "js": ["plugins/wykop.js"],
+            "matches": ["*://*.wykop.pl/*"]
+        },
+        {
+            "js": ["plugins/9gag.js"],
+            "matches": ["*://9gag.com/*"]
+        },
+        {
+            "js": ["plugins/hiptest.js"],
+            "matches": ["*://app.hiptest.com/*"]
         }
    ]
 }
